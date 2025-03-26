@@ -1,2 +1,0 @@
-depth_pro.pt filter=lfs diff=lfs merge=lfs -text
-checkpoints/depth_pro.pt filter=lfs diff=lfs merge=lfs -text
