@@ -47,16 +47,16 @@ This will open the web interface in your default browser, typically at `http://l
  - **Launch the app and point your smartphone camera at the desired surroundings.**
    ```bash
       # The initial script serves as a prototype, where I utilized the model to analyze its accuracy 
-      # by applying it to a 4K video.
+      # by applying it to a 4K video or image.
       from ultralytics import YOLO
-      model = YOLO("best.pt")
+      model = YOLO("object_detection.pt")
       model.predict("path/to/video/or/image", save=True, imgsz=640, conf=0.5, device="mps", show=True)
       # This script is designed for Apple Silicon MacBooks that support Metal 
       # for the integrated graphics card. It enables the use of the iPhone's camera 
       # for real-time detection. To utilize the MacBook's webcam, replace the first parameter (0) with 1, and the model will 
       # perform real-time detection from the laptop's camera.
       from ultralytics import YOLO
-      model = YOLO("best.pt")
+      model = YOLO("object_detection.pt")
       model.predict(0, save=True, imgsz=640, conf=0.5, device="mps", show=True)
    ```
 - **The app will identify and describe objects or obstacles in real time.**
