@@ -22,7 +22,7 @@ An AI-driven application designed to assist visually impaired individuals in nav
 |---------------------|----------------------------------------------------|
 | Language             | Python                                             |
 | Object Detection     | YOLOv8 (Ultralytics)                               |
-| Depth Estimation     | Apple Depth Pro + CoreML                           |
+| Depth Estimation     | Apple Depth Pro                          |
 | Data Processing      | OpenCV, NumPy, Pandas                              |
 | Voice Feedback       | pyttsx3                                            |
 | Web Interface        | Streamlit                                          |
