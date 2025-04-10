@@ -7,8 +7,13 @@ import pyttsx3
 
 class ObjectDetection_and_Distance_Estimation:
     def __init__(self, capture_index):
+        """
+            Class for performing real-time object detection and distance estimation 
+            using a YOLOv8 model and a depth prediction model.
+            It also provides voice feedback to guide the user.
+        """
+        
         self.capture_index = capture_index
-
         self.device = 'mps' if torch.mps.is_available() else 'cpu'
         self.yolo_model = self.load_yolo_model()
         self.depth_model, self.transform = depth_pro.create_model_and_transforms()
@@ -19,15 +24,43 @@ class ObjectDetection_and_Distance_Estimation:
 
     @staticmethod
     def load_yolo_model():
+        """
+        Load and fuse the YOLOv8 model for object detection.
+
+        Returns:
+            YOLO: Loaded YOLO object detection model.
+        """
+        
         yolo_model = YOLO("object_detection.pt")
         yolo_model.fuse()
         return yolo_model
 
     def predict(self, frame):
+        """
+        Run object detection on a given video frame.
+
+        Args:
+            frame (np.ndarray): The input image frame.
+
+        Returns:
+            list: YOLO detection results.
+        """
+        
         results = self.yolo_model(frame)
         return results
 
     def plot_bboxes_and_depth_estimation(self, results, frame):
+        """
+        Draw bounding boxes for detected objects and estimate depth for each.
+
+        Args:
+            results (list): YOLO detection results.
+            frame (np.ndarray): The input video frame.
+
+        Returns:
+            tuple: Annotated frame, list of object boxes, and depth map.
+        """
+        
         object_boxes = []
         for result in results:
             boxes = result.boxes.xyxy.cpu().numpy()
@@ -84,6 +117,20 @@ class ObjectDetection_and_Distance_Estimation:
         return frame, object_boxes, depth
 
     def get_directions(self, frame, object_boxes, depth):
+        """
+        Analyze object positions and depth to determine navigation instructions.
+
+        Args:
+            frame (np.ndarray): Current video frame.
+            object_boxes (list): List of tuples with bounding box coords and class names.
+            depth (np.ndarray): Depth map for the frame.
+
+        Voice Feedback:
+            - Warns about obstacles in front.
+            - Suggests going left or right.
+            - Tells the user to stop if no direction is safe.
+        """
+        
         image_height, image_width = frame.shape[:2]
         third_width = image_width // 3
         left_side = third_width
@@ -115,9 +162,9 @@ class ObjectDetection_and_Distance_Estimation:
                 right_obstacles.append((class_name, depth_value))
 
 
-        if any(d < 1.5 for _, d in front_obstacles):
-            left_blocked = any(d < 1.5 for _, d in left_obstacles)
-            right_blocked = any(d < 1.5 for _, d in right_obstacles)
+        if any(d <= 1.5 for _, d in front_obstacles):
+            left_blocked = any(d <= 1.5 for _, d in left_obstacles)
+            right_blocked = any(d <= 1.5 for _, d in right_obstacles)
 
             if left_blocked and right_blocked:
                 self.engine.say(f"{class_name} ahead. No space left or right. Please stop.")
@@ -129,6 +176,11 @@ class ObjectDetection_and_Distance_Estimation:
         self.engine.runAndWait()      
 
     def __call__(self):
+        """
+        Run the main loop for real-time detection, depth estimation,
+        and navigation instructions until the user quits.
+        """
+        
         cap = cv2.VideoCapture(self.capture_index)
         assert cap.isOpened(), "Error: Could not open video capture."
     
