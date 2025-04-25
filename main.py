@@ -1,4 +1,4 @@
 from src.data_prediction.yolo_predictions_and_distance_estimation import ObjectDetection_and_Distance_Estimation
 
-detector_and_distance_estimation = ObjectDetection_and_Distance_Estimation(capture_index='challenge_color_848x480.mp4')
+detector_and_distance_estimation = ObjectDetection_and_Distance_Estimation(capture_index=1)
 detector_and_distance_estimation()
