@@ -75,7 +75,7 @@ translations = {
           - Adaptabilitate pentru diferite medii (exterior, interior, spații aglomerate).  
 
         - **🔹 Estimarea Distanței cu Tehnologia LiDAR**  
-          - Integrare cu **Apple ml-depth-pro** pentru măsurarea distanței.  
+          - Integrare cu **Apple Depth Pro** pentru estimarea distanței.  
           - Detectarea adâncimii și generarea de feedback audio personalizat.  
 
         - **🔹 Feedback Audio Inteligent**  
@@ -129,7 +129,7 @@ translations = {
           - Adaptability for different environments (outdoor, indoor, crowded spaces).  
 
         - **🔹 Distance Estimation with LiDAR**  
-          - Integration with **Apple ml-depth-pro** for precise depth measurement.  
+          - Integration with **Apple Depth Pro** for precise depth estimation.  
           - Depth detection and customized audio feedback.  
 
         - **🔹 Smart Audio Feedback**  

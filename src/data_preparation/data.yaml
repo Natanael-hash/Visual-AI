@@ -1,11 +1,11 @@
 train: data_images/train
 val: data_images/test
-nc: 36
+nc: 39
 names: ['person',
         'bicycle',
         'garbage container',
-        'car',
         'bus',
+        'car',
         'train',
         'traffic_sign',
         'traffic cone',
@@ -36,5 +36,8 @@ names: ['person',
         'aeroplane',
         'diningtable',
         'Tree',
-        'Ponds'
+        'Ponds',
+        'wall',
+        'bench',
+        'bridge'
 ]

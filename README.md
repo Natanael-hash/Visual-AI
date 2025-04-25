@@ -21,7 +21,7 @@ An AI-driven application designed to assist visually impaired individuals in nav
 | Component            | Description                                        |
 |---------------------|----------------------------------------------------|
 | Language             | Python                                             |
-| Object Detection     | YOLOv8 (Ultralytics)                               |
+| Object Detection     | YOLOv12 (Ultralytics)                               |
 | Depth Estimation     | Apple Depth Pro                          |
 | Data Processing      | OpenCV, NumPy, Pandas                              |
 | Voice Feedback       | pyttsx3                                            |
@@ -58,7 +58,7 @@ For testing with 4K video or webcam:
 
 ```python
 from ultralytics import YOLO
-model = YOLO("object_detection.pt")
+model = YOLO("object_detection_model-3.pt")
 # Test with video or image
 model.predict("path/to/video/or/image", save=True, imgsz=640, conf=0.5, device="mps", show=True)
 # Real-time webcam detection

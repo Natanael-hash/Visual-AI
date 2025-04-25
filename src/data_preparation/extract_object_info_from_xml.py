@@ -124,7 +124,7 @@ def label_encoding(label):
         'crosswalk-sign': 17, 'crosswalk': 18, 'chair': 19, 'bottle': 20, 'pottedplant': 21,
         'bird': 22, 'dog': 23 ,'sofa': 24 ,'horse': 25, 'boat': 26, 'motorbike': 27,
         'cat': 28, 'tvmonitor': 29, 'cow': 30, 'sheep': 31, 'aeroplane': 32, 'diningtable': 33,
-        'Tree': 34, 'Ponds': 35
+        'Tree': 34, 'Ponds': 35, 'wall': 36, 'bench': 37, 'bridge': 38
     }
     try:
         return labels[label]

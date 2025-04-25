@@ -20,7 +20,7 @@ class ObjectDetection_and_Distance_Estimation:
         self.depth_model = self.depth_model.to(self.device)
         self.depth_model.eval()
         self.engine = pyttsx3.init()
-        self.engine.setProperty('rate', 100)
+        self.engine.setProperty('rate', 50)
 
     @staticmethod
     def load_yolo_model():
@@ -31,7 +31,7 @@ class ObjectDetection_and_Distance_Estimation:
             YOLO: Loaded YOLO object detection model.
         """
         
-        yolo_model = YOLO("object_detection.pt")
+        yolo_model = YOLO("object_detection_model-3.pt")
         yolo_model.fuse()
         return yolo_model
 
@@ -171,7 +171,7 @@ class ObjectDetection_and_Distance_Estimation:
             elif not left_blocked:
                 self.engine.say(f"{class_name} ahead. Go around it to the left.")
             elif not right_blocked:
-                self.engine.say(f"{class_name}ahead. Go around it to the right.")
+                self.engine.say(f"{class_name} ahead. Go around it to the right.")
 
         self.engine.runAndWait()      
 
