@@ -8,7 +8,7 @@ An AI-driven application designed to assist visually impaired individuals in nav
 
 ## 🔍 Features
 
-- **Real-Time Object Detection**: Identifies obstacles and important objects around the user using YOLOv8.
+- **Real-Time Object Detection**: Identifies obstacles and important objects around the user using YOLOv12.
 - **Depth Estimation**: Estimates the distance between user and object using Apple's Depth Pro model.
 - **Voice Feedback System**: Guides the user with audio cues, helping them navigate safely.
 - **Streamlit-Based Interface**: Clean and interactive UI for quick testing and usability.
