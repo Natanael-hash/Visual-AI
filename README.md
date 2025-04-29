@@ -78,7 +78,7 @@ The custom YOLOv12m model was trained on a dataset of over 30,000 annotated imag
 - Cache: Enabled for fast loading
 - Device: GPU (A100)
 
-![Training Results](src/web_interface/assets/YOLOv12 Training Progress Over Epochs.png)
+![Training Results](src/web_interface/assets/YOLOv12_Training_Progress_Over_Epochs.png)
 
 The model achieved strong generalization with a final mAP of 0.837, and was validated on multiple video environments to ensure robustness and real-time performance.
 
