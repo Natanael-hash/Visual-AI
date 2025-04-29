@@ -39,8 +39,12 @@ source env/bin/activate  # On Mac/Linux
 # or
 env\Scripts\activate  # On Windows
 pip install -r requirements.txt
+# Install Apple Depth Pro as a local package
+cd src/web_interface/pages/ml-depth-pro/
+pip install -e .
 # Download the pretrained model for Apple Depth Pro
 source src/web_interface/pages/ml-depth-pro/get_pretrained_models.sh
+# On Windows: Run this inside Git Bash or WSL. The 'source' command won't work in CMD or PowerShell.
 ```
 
 ### 2. Run Streamlit Interface
