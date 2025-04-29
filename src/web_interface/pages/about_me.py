@@ -48,7 +48,7 @@ def show_about_page():
 
     language = st.session_state.language
     st.title(t[language]["title"])
-    st.image("assets/6B84E397-8F2C-4963-8376-411A019E266D_1_102_a.jpeg", caption="Hordon Natanael", width=300)
+    st.image("src/web_interface/assets/6B84E397-8F2C-4963-8376-411A019E266D_1_102_a.jpeg", caption="Hordon Natanael", width=300)
     st.markdown(t[language]["description"])
     st.header(t[language]["project_title"])
     st.markdown(t[language]["project_description"])

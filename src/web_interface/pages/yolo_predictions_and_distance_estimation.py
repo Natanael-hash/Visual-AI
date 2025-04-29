@@ -9,7 +9,7 @@ class ObjectDetection_and_Distance_Estimation:
     def __init__(self, capture_index):
         """
             Class for performing real-time object detection and distance estimation 
-            using a YOLOv8 model and a depth prediction model.
+            using a YOLOv12 model and a depth prediction model.
             It also provides voice feedback to guide the user.
         """
         
@@ -20,12 +20,12 @@ class ObjectDetection_and_Distance_Estimation:
         self.depth_model = self.depth_model.to(self.device)
         self.depth_model.eval()
         self.engine = pyttsx3.init()
-        self.engine.setProperty('rate', 50)
+        self.engine.setProperty('rate', 100)
 
     @staticmethod
     def load_yolo_model():
         """
-        Load and fuse the YOLOv8 model for object detection.
+        Load and fuse the YOLOv12 model for object detection.
 
         Returns:
             YOLO: Loaded YOLO object detection model.
@@ -151,7 +151,7 @@ class ObjectDetection_and_Distance_Estimation:
             depth_value = depth[center_y, center_x]
 
             
-            if center_y > image_height * 0.75:
+            if center_y > image_height * 0.80:
                 continue
 
             if center_x < left_side:

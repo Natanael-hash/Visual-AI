@@ -59,6 +59,7 @@ translations = {
         "home_title": "🏠 Acasă",
         "about": "👤 Despre Mine",
         "login": "🔑 Autentificare",
+        "visual": "👁️ Visual", 
         "language": "🌐 Schimbă limba",
         "contrast_button": "🎨 High-Contrast",
         "welcome_message": "Visual AI – Asistent Inteligent pentru Persoane cu Deficiențe de Vedere",
@@ -70,7 +71,7 @@ translations = {
 
         ## 🛠️ Funcționalități Principale  
         - **🔹 Detecția Obiectelor (Object Detection)**  
-          - Model **YOLOv8** antrenat pe un dataset personalizat cu **30.000+ imagini** și **36 de clase**.  
+          - Model **YOLOv12** antrenat pe un dataset personalizat cu **30.000+ imagini** și **39 de clase**.  
           - Feedback audio instantaneu pentru recunoaștere rapidă.  
           - Adaptabilitate pentru diferite medii (exterior, interior, spații aglomerate).  
 
@@ -93,11 +94,9 @@ translations = {
           
         ## 🛠️ Tehnologii Utilizate
         ✅ **Python + Streamlit** (pentru prototipul web)  
-        ✅ **YOLOv8 + ONNX + Core ML** (pentru inferența modelului)  
-        ✅ **Apple ml-depth-pro + LiDAR** (pentru estimarea distanței)  
-        ✅ **Swift + SwiftUI** (pentru aplicația iOS)  
-        ✅ **Text-to-Speech (TTS) & Speech Recognition** (pentru interacțiunea audio)  
-        ✅ **FastAPI + SQLAlchemy** (pentru backend-ul aplicației)
+        ✅ **YOLOv12** (pentru inferența modelului)  
+        ✅ **Apple Depth Pro** (pentru estimarea distanței)   
+        ✅ **PYTSSX** (pentru interacțiunea audio)  
 
         ## 🔮 Planuri de Viitor  
         - 🏁 Navigație avansată cu ghidare bazată pe analiza mediului.  
@@ -113,6 +112,7 @@ translations = {
         "home_title": "🏠 Home",
         "about": "👤 About Me",
         "login": "🔑 Login",
+        "vision": "👁️ Vision",
         "language": "🌐 Change Language",
         "contrast_button": "🎨 High-Contrast",
         "welcome_message": "Visual AI – Intelligent Assistant for Visually Impaired People",
@@ -147,11 +147,9 @@ translations = {
           
         ## 🛠️ Technologies Used
         ✅ **Python + Streamlit** (for the web prototype)  
-        ✅ **YOLOv8 + ONNX + Core ML** (for model inference)  
-        ✅ **Apple ml-depth-pro + LiDAR** (for distance estimation)  
-        ✅ **Swift + SwiftUI** (for the iOS app)  
-        ✅ **Text-to-Speech (TTS) & Speech Recognition** (for audio interaction)  
-        ✅ **FastAPI + SQLAlchemy** (for the app backend)    
+        ✅ **YOLOv12** (for model inference)  
+        ✅ **Apple Depth Pro** (for distance estimation)   
+        ✅ **PYTTSX** (for audio interaction)  
 
         ## 🔮 Future Plans  
         - 🏁 Advanced navigation with AI-based guidance.  
@@ -184,13 +182,21 @@ if "page" not in st.session_state:
     st.session_state.page = "home"
 
 st.sidebar.title("🔎 Navigare")
-nav_options = [t["home_title"], t["about"], t["login"]]
+nav_options = [t["home_title"], t["about"], t["login"], t["visual"]] 
 page = st.sidebar.radio("", nav_options)
 
 if st.sidebar.button(t["contrast_button"]):
     st.session_state.high_contrast = not st.session_state.high_contrast
     apply_styles()
     st.rerun()
+
+# Function to show the vision page
+def show_visual_page():
+    try:
+        from pages import visual
+        visual.run_visual_ai()
+    except Exception as e:
+        st.error(f"Eroare la rularea modulului Visual AI: {e}")
 
 if st.session_state.page == "signup":
     sign_up.show_signup_page()
@@ -207,3 +213,6 @@ else:
     elif page == t["login"]:
         st.session_state.page = "login"
         login_page.show_login_page()
+    elif page == t["visual"]:
+        st.session_state.page = "vision"
+        show_visual_page()
