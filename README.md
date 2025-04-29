@@ -32,13 +32,15 @@ The system was built and optimized to run on GPU-based cloud instances (AWS), en
 
 ### 1. Clone & Setup
 ```bash
-git clone https://github.com/Natanael-hash/Visual-AI.git
+git clone --recurse-submodules https://github.com/Natanael-hash/Visual-AI.git
 cd Visual-AI
 python -m venv env
 source env/bin/activate  # On Mac/Linux
 # or
 env\Scripts\activate  # On Windows
 pip install -r requirements.txt
+# Download the pretrained model for Apple Depth Pro
+source src/web_interface/pages/ml-depth-pro/get_pretrained_models.sh
 ```
 
 ### 2. Run Streamlit Interface
