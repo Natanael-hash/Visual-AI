@@ -1,18 +1,16 @@
 # Visual AI: AI-Powered HealthCare Application
 
-An AI-driven application designed to assist visually impaired individuals in navigating their surroundings. The app leverages real-time image recognition to enhance accessibility and independence.
+![Visual-AI Eye Logo](src/web_interface/assets/Visual-AI.png)
 
-![Visual-AI – The augmented eye symbolizes the power of artificial intelligence to perceive and interpret the surrounding environment, providing advanced visual assistance for visually impaired individuals. 🚀](src/web_interface/assets/Visual-AI.png)
+An AI-driven assistive system designed to help visually impaired individuals understand and navigate their environment in real-time.
 
----
+The solution integrates multiple computer vision technologies:
+- **YOLOv12m** for precise and efficient object detection.
+- **Apple Depth Pro** for accurate monocular depth estimation.
+- **pyttsx3** for offline text-to-speech feedback in real-time.
+- **Streamlit** to deliver a lightweight, interactive frontend interface.
 
-## 🔍 Features
-
-- **Real-Time Object Detection**: Identifies obstacles and important objects around the user using YOLOv12.
-- **Depth Estimation**: Estimates the distance between user and object using Apple's Depth Pro model.
-- **Voice Feedback System**: Guides the user with audio cues, helping them navigate safely.
-- **Streamlit-Based Interface**: Clean and interactive UI for quick testing and usability.
-- **Designed for Accessibility**: Tailored for real-world assistive scenarios.
+The system was built and optimized to run on GPU-based cloud instances (AWS), ensuring smooth performance even during complex visual scenes. The application was initially prototyped for desktop (Streamlit) and is planned for mobile deployment in future stages.
 
 ---
 
@@ -35,7 +33,7 @@ An AI-driven application designed to assist visually impaired individuals in nav
 ### 1. Clone & Setup
 ```bash
 git clone https://github.com/Natanael-hash/Visual-AI.git
-cd Visual_AI
+cd Visual-AI
 python -m venv env
 source env/bin/activate  # On Mac/Linux
 # or
@@ -64,6 +62,25 @@ model.predict("path/to/video/or/image", save=True, imgsz=640, conf=0.5, device="
 # Real-time webcam detection
 model.predict(0, save=True, imgsz=640, conf=0.5, device="mps", show=True)
 ```
+
+---
+
+## 📊 Training Overview
+
+The custom YOLOv12m model was trained on a dataset of over 30,000 annotated images, many of which were obtained by slicing high-resolution video frames, though not all images originated from this process. Annotations were refined using Roboflow's platform and manually corrected to avoid mislabeling.
+
+**Training configuration**:
+- Epochs: 100
+- Batch size: 16
+- Image size: 864
+- Optimizer: SGD with lr0=0.001 and cosine LR scheduling
+- Patience: 20 (early stopping)
+- Cache: Enabled for fast loading
+- Device: GPU (A100)
+
+![Training Results](src/web_interface/assets/YOLOv12 Training Progress Over Epochs.png)
+
+The model achieved strong generalization with a final mAP of 0.837, and was validated on multiple video environments to ensure robustness and real-time performance.
 
 ---
 
