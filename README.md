@@ -58,7 +58,7 @@ Visit `http://localhost:8501` to interact with the interface.
 
 ## 🎥 Object Detection (Prototype)
 
-For testing with 4K video or webcam:
+For testing with video or webcam:
 
 ```python
 from ultralytics import YOLO
@@ -86,7 +86,7 @@ The custom YOLOv12m model was trained on a dataset of over 30,000 annotated imag
 
 ![Training Results](src/web_interface/assets/YOLOv12_Training_Progress_Over_Epochs.png)
 
-The model achieved strong generalization with a final mAP of 0.837, and was validated on multiple video environments to ensure robustness and real-time performance.
+The model achieved strong generalization with a final mAP of 0.837. Training stopped at epoch 90 due to a Google Colab connection loss. Given the excellent results obtained, I decided not to resume the training, as the current model already demonstrates robust real-time performance across various scenarios.
 
 ---
 
