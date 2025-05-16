@@ -43,7 +43,7 @@ pip install -r requirements.txt
 cd src/web_interface/pages/ml-depth-pro/
 pip install -e .
 # Download the pretrained model for Apple Depth Pro
-source src/web_interface/pages/ml-depth-pro/get_pretrained_models.sh
+source get_pretrained_models.sh
 # On Windows: Run this inside Git Bash or WSL. The 'source' command won't work in CMD or PowerShell.
 ```
 
